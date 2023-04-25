@@ -1,5 +1,11 @@
-.marketplace {
+body{
+  background-color: rgb(250, 250, 250);
+}
 
+
+.marketplace {
+  position: relative;
+  left: 10%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -72,3 +78,8 @@ button:hover {
 }
 
 
+.panier-logo{
+  position: absolute;
+  left: 2%;
+  width: 2%;
+}

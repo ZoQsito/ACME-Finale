@@ -1,0 +1,197 @@
+@font-face {
+   font-family: "Lexend-Medium";
+   src: url(./Lexend-Medium.ttf);
+ }
+ @font-face {
+   font-family: "Lexend-Light";
+   src: url(./Lexend-Light.ttf);
+ }
+
+
+ a{
+    color: rgb(0, 0, 0) !important;
+    position: relative;
+    left: 0%;
+    text-decoration:none;
+    transition: color 0.3s ease;
+ }
+ 
+ nav{
+   font-family: "Lexend-Light" !important;
+padding-top: 5% !important;
+    background-color: rgb(255, 255, 255) !important;
+    width: 15%;
+    height: 970px;
+    position: fixed !important;
+    text-align: center !important;
+    display: block !important;
+ }
+
+ .logs{
+    color: black;
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+    text-decoration: none;
+ }
+
+ .titleacme{
+    font-size: 28px;
+    font-family: "Lexend-Medium" !important;
+
+ }
+
+ ul{
+    list-style-type: none;
+ }
+
+ .copyright{
+    font-size: 10px;
+    position: absolute;
+    bottom: 10%;
+    left: 11%;
+    transition: color 0.3s ease;
+ }
+
+ .copyright:hover{
+   color: #333333;
+}
+
+ .deconected-button{
+   background-color: #585858;
+   color: white;
+   border: none;
+   padding: 10px 16px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 4px;
+   transition: background-color 0.2s ease;
+   position: absolute;
+   top: 80%;
+   left: 22%;
+ }
+
+ .deconected-button:hover{
+   background-color: #333333;
+}
+
+.deconected-p{
+   position: absolute;
+   top: 81%;
+   left: 20%;
+}
+
+.register-button{
+   background-color: #91332b;
+   color: white;
+   border: none;
+   padding: 8px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 4px;
+   transition: background-color 0.2s ease;
+}
+
+ .register-button:hover{
+   background-color: #9e362c;
+}
+
+.login-button{
+   color: #000000;
+   background-color: transparent !important;
+   border: none;
+   padding: 8px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 4px;
+   transition: color 0.3s ease;
+}
+
+ .login-button:hover{
+   color: #91332b;
+}
+
+.nav-accueil{
+   position: relative;
+   display: inline-block; 
+   text-decoration: none;
+   margin-bottom: 15px;
+}
+
+.nav-accueil::before {
+   content: ""; 
+   position: absolute; 
+   bottom: -2px; 
+   left: 0; 
+   width: 0%; 
+   height: 100%;
+   border-bottom: 2px solid #91332b ;
+   transition: width 0.5s ease; 
+ }
+
+ .nav-accueil:hover::before {
+   width: 100%;
+ }
+
+ .nav-boutique{
+   position: relative;
+   display: inline-block; 
+   text-decoration: none;
+   margin-bottom: 15px;
+}
+
+.nav-boutique::before {
+   content: ""; 
+   position: absolute; 
+   bottom: -2px; 
+   left: 0; 
+   width: 0%; 
+   height: 100%;
+   border-bottom: 2px solid #91332b ;
+   transition: width 0.5s ease; 
+ }
+
+ .nav-boutique:hover::before {
+   width: 100%;
+ }
+
+ .nav-historique{
+   position: relative;
+   display: inline-block; 
+   text-decoration: none;
+   margin-bottom: 15px;
+}
+
+.nav-historique::before {
+   content: ""; 
+   position: absolute; 
+   bottom: -2px; 
+   left: 0; 
+   width: 0%; 
+   height: 100%;
+   border-bottom: 2px solid #91332b ;
+   transition: width 0.5s ease; 
+ }
+
+ .nav-historique:hover::before {
+   width: 100%;
+ }
+
+
+
+
+ 
+
+ 

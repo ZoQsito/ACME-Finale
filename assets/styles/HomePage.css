@@ -1,4 +1,36 @@
+@font-face {
+  font-family: "Lexend-Medium";
+  src: url(./Lexend-Medium.ttf);
+}
+@font-face {
+  font-family: "Lexend-Light";
+  src: url(./Lexend-Light.ttf);
+}
+
+
+body{
+  background-color: rgb(250, 250, 250);
+  animation-name: enter1;
+  animation-delay: 0s;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes enter1{
+  0%{
+    opacity: 0%;
+  }
+  40%{
+    opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+
 .home-page-container {
+  position: relative;
+  left: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,3 +66,239 @@
   .discover-btn:hover {
   background-color: #21867a;
   }
+
+  .adidashome{
+    width: 45%;
+    position: absolute;
+    left: 5%;
+    top: 200%;
+    z-index: 1;
+  }
+
+  .rondhome{
+    width: 40%;
+    position: absolute;
+    left: 9.5%;
+    top: 350%;
+  }
+
+  .titlehome{
+    position: absolute;
+    left: 60%;
+    top: 450%;
+    font-family: "Lexend-Medium";
+  }
+
+  .typehome{
+    position: absolute;
+    left: 60%;
+    top: 350%;
+    font-family: "Lexend-Light";
+  }
+
+  .deschome{
+    position: absolute;
+    left: 60%;
+    top:  600%;
+    font-family: "Lexend-Light";
+    font-size: 18px;
+  }
+
+  .liste-deroulante-home{
+    position: absolute;
+    left: 0%;
+    top: 600%;
+    color: #c44934;
+    font-family: "Lexend-Medium";
+  }
+
+  .liste-deroulante-une{
+    margin: 20px !important;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    color: #c44934;
+  }
+
+  .liste-deroulante-une::before {
+    content: ""; 
+    position: absolute; 
+    bottom: 190px; 
+    left: -40px; 
+    width: 100%; 
+    height: 0%;
+    border-left: 2px solid #000000 ;
+    transition: all 0.3s ease; 
+  }
+ 
+
+  .liste-deroulante-une:focus::before{
+    margin: 20px !important;
+    color: black !important;
+    height: 10%;
+  }
+
+  .liste-deroulante-une:focus{
+    color: #000000;
+    background-color: transparent !important;
+  }
+
+  .liste-deroulante-une:hover{
+    background-color: transparent !important;
+  }
+
+
+
+
+  .liste-deroulante-deux{
+    margin: 20px !important;
+    transition: all 0.5s ease;
+    border: none;
+    background-color: transparent;
+    color: #c44934;
+  }
+
+  .liste-deroulante-deux::before {
+    content: ""; 
+    position: absolute; 
+    bottom: 130px; 
+    left: -40px; 
+    width: 100%; 
+    height: 0%;
+    border-left: 2px solid #000000 ;
+    transition: all 0.3s ease; 
+  }
+
+  .liste-deroulante-deux:focus::before{
+    margin: 20px !important;
+    color: black !important;
+    height: 10%;
+  }
+  
+  .liste-deroulante-deux:focus{
+    color: black;
+    background-color: transparent !important;
+  }
+
+  .liste-deroulante-deux:hover{
+    background-color: transparent !important;
+  }
+
+
+
+  .liste-deroulante-trois{
+    margin: 20px !important;
+    transition: all 0.5s ease;
+  }
+
+  .liste-deroulante-trois::before {
+    content: ""; 
+    position: absolute; 
+    bottom: 60px; 
+    left: -40px; 
+    width: 100%; 
+    height: 0%;
+    border-left: 2px solid #000000 ;
+    transition: all 0.3s ease; 
+  }
+
+  .liste-deroulante-trois:focus::before{
+    margin: 20px !important;
+    color: black !important;
+    height: 10%;
+  }
+
+  .liste-deroulante-focus:hover{
+    color: black;
+  }
+
+
+  .liste-deroulante-quatre::before {
+    content: ""; 
+    position: absolute; 
+    bottom: 0px; 
+    left: -40px; 
+    width: 100%; 
+    height: 0%;
+    border-left: 2px solid #000000 ;
+    transition: all 0.3s ease; 
+  }
+
+  .liste-deroulante-quatre:focus::before{
+    margin: 20px !important;
+    color: black !important;
+    height: 10%;
+  }
+
+  .liste-deroulante-quatre{
+    margin: 20px !important;
+    transition: all 0.5s ease;
+  }
+
+  .liste-deroulante-quatre:focus{
+    color: black;
+  }
+
+  .image-home{
+    position: absolute;
+    left: 8%;
+    top: 170%;
+    width: 45%;
+    z-index: 1;
+  }
+
+  .image-home{
+    position: absolute;
+  }
+
+  @keyframes bouger {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, 30px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  .image-home:hover {
+    animation: bouger 1s ease-in-out;
+  }
+
+  .transition-element {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .transition-element.visible {
+    opacity: 1;
+  }
+
+  .boutique-home{
+    position: absolute;
+    bottom: -100ch;
+    background-color: #91332b;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+ 
+  .boutique-home:hover{
+    background-color: #9e362c;
+ }
+ 
+ .prix-product{
+  position: absolute;
+  top: 1400%;
+  left: 60%;
+ }

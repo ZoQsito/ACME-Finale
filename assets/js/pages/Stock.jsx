@@ -39,7 +39,7 @@ function Stock() {
           <div className="table table-striped">
             <table className="table align-items-center mb-0">
               <thead>
-                <tr>
+                <tr className='tr-stock'>
                   <th>ID</th>
                   <th>Nom</th>
                   <th>Prix</th>
