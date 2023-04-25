@@ -44,7 +44,9 @@ function ShopPage() {
     };
     console.log(cardInfo);
     Axios.post("http://127.0.0.1:8000/api/paniers", cardInfo)
-    toast.success("Le Produit a bien été ajouté");
+    toast.success("Le Produit a bien été ajouté", {
+      position: "bottom-center",
+      });
   
   }
 
@@ -56,10 +58,14 @@ function ShopPage() {
     try {
       await Axios
       .delete("http://127.0.0.1:8000/api/produits/" + id)
-      toast.success("Le Produit a bien été supprimé");
+      toast.success("Le Produit a bien été supprimé", {
+        position: "bottom-center",
+        });
     } catch (error) {
       setProducts(originalProduct);
-      toast.error("La suppression du Produit n'a pas pu fonctionner");
+      toast.error("La suppression du Produit n'a pas pu fonctionner", {
+        position: "bottom-center",
+        });
     }
   };
 
@@ -87,7 +93,6 @@ function ShopPage() {
             <div className="price">${product.prix}</div>
             <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>
             <button id='button2' onClick={() => handleDelete(product)}>Supprimer</button>
-            <button onClick={handleAddToCart}>TEST</button>
           </div>
         ))}
       </div>

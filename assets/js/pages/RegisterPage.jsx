@@ -35,14 +35,18 @@ const RegisterPage = ({ history }) => {
       apiErrors.passwordConfirm =
         "Votre Confirmation de Mot de Passe n'est pas comforme avec le Mot de Passe";
       setErrors(apiErrors);
-      toast.error("Des erreurs dans votre Formulaire !😠");
+      toast.error("Des erreurs dans votre Formulaire !😠", {
+        position: "bottom-center",
+        });
       return;
     }
 
     try {
       await usersAPI.register(user);
       setErrors({});
-      toast.success("Vous êtes Désormais Inscrit !😄");
+      toast.success("Vous êtes Désormais Inscrit !😄", {
+        position: "bottom-center",
+        });
       history.replace("/login");
     } catch (error) {
       console.log(error.response);
@@ -55,7 +59,9 @@ const RegisterPage = ({ history }) => {
         });
         setErrors(apiErrors);
       }
-      toast.error("Des erreurs dans votre Formulaire !😠");
+      toast.error("Des erreurs dans votre Formulaire !😠", {
+        position: "bottom-center",
+        });
     }
   };
 

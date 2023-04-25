@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import {Helmet} from "react-helmet";
 import '../css/Navbar.css';
+import '../css/Navbar-Responsive.css';
 import cartIconEmpty from './images/cart-icon-empty.png';
 import cartIconFull from './images/cart-icon-full.png';
 
@@ -17,7 +18,9 @@ const Navbar = ({history}) => {
     const handleLogout = () => {
       authAPI.logout();
       setIsAuthenticated(false);
-      toast.info("Vous êtes Déconnecté 😄");
+      toast.info("Vous êtes Déconnecté 😄", {
+        position: "bottom-center",
+        });
       history.push("/login");
     };
 

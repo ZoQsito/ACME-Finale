@@ -34,7 +34,9 @@ const LoginPage = ({history}) => {
             await authAPI.authenticate(credentials);
             setError("");
             setIsAuthenticated(true);
-            toast.success("Vous êtes Connecté 😄")
+            toast.success("Vous êtes Connecté 😄", {
+                position: "bottom-center",
+                })
             history.replace("/shop");
         } catch (error) {
             setError("Aucun Compte ne possède cette adresse ou alors les informations ne correspondent pas !");
@@ -44,7 +46,7 @@ const LoginPage = ({history}) => {
 
     return ( <>
     
-
+<div className='login-container'>
     <h1>Connexion à l'application</h1>&nbsp;
 
     <form onSubmit={handleSubmit}>
@@ -56,7 +58,7 @@ const LoginPage = ({history}) => {
             <button type='submit' className="btn btn-primary">Connexion</button>
         </div>
     </form>
-    
+    </div>
     </> 
     
     );
