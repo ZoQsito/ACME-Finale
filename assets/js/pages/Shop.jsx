@@ -6,7 +6,7 @@ import handleAddToCart from '../../js/components/Navbar';
 import cartIconEmpty from '../../js/components/images/cart-icon-empty.png';
 import cartIconFull from '../../js/components/images/cart-icon-full.png';
 import { toast } from "react-toastify";
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 
 function ShopPage() {
@@ -77,10 +77,14 @@ function ShopPage() {
       <h1>Bienvenue sur notre marketplace</h1>
 
       <div className='shop'>
-      {basket.length > 0 ?
-       <img className='panier-logo' src={cartIconFull} alt="Logo panier plein" /> :
-        <img className='panier-logo' src={cartIconEmpty} alt="Logo panier vide"/>
-      }
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            {basket.length > 0 ?
+              <NavLink className="nav-link" to="/panier"><img className='panier-logo'  src={cartIconFull} alt="Logo panier plein" /></NavLink> : 
+              <NavLink className="nav-link" to="/panier"><img className='panier-logo'  src={cartIconEmpty} alt="Logo panier vide"/></NavLink>
+            }
+          </li>
+        </ul>
     </div>
       
 
