@@ -1,0 +1,39 @@
+.Field {
+    position: relative;
+    margin-bottom: 20px; /* Marge en bas du champ de saisie */
+  }
+  
+  /* Style pour l'étiquette du champ de saisie d'adresse e-mail */
+  .Field label {
+    display: block;
+    margin-bottom: 5px; /* Marge en bas de l'étiquette */
+    font-weight: bold; /* Style de police en gras pour l'étiquette */
+  }
+  
+  /* Style pour le champ de saisie d'adresse e-mail */
+  .Field input {
+    width: 100%; /* Largeur du champ de saisie */
+    padding: 10px; /* Espacement intérieur du champ de saisie */
+    border: 1px solid #ccc; /* Bordure du champ de saisie */
+    border-radius: 5px; /* Coins arrondis du champ de saisie */
+    font-size: 16px; /* Taille de la police du texte dans le champ de saisie */
+  }
+  
+  /* Style pour le texte de l'indicateur de saisie dans le champ de saisie d'adresse e-mail */
+  .Field input::placeholder {
+    color: #999; /* Couleur du texte de l'indicateur de saisie */
+  }
+  
+  /* Style pour le champ de saisie d'adresse e-mail en cas d'erreur */
+  .Field input.error {
+    border-color: #ff0000; /* Couleur de la bordure en cas d'erreur */
+  }
+  
+  /* Style pour le message d'erreur associé au champ de saisie d'adresse e-mail */
+  .Field .error-message {
+    position: absolute;
+    bottom: -20px; /* Position en bas du message d'erreur */
+    left: 0;
+    color: #ff0000; /* Couleur du texte du message d'erreur */
+    font-size: 14px; /* Taille de la police du texte du message d'erreur */
+  }

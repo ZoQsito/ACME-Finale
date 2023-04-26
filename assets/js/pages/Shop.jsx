@@ -95,7 +95,6 @@ function ShopPage() {
             <h2>{product.nom}</h2>
             <div className="price">${product.prix}</div>
             <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>
-            <button id='button2' onClick={() => handleDelete(product)}>Supprimer</button>
           </div>
         ))}
       </div>

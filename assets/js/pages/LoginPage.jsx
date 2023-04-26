@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import Field from '../components/forms/Field';
 import AuthContext from '../contexts/AuthContext';
 import authAPI from '../services/authAPI';
+import "../../styles/LoginPage.css"
 
 
 const LoginPage = ({history}) => {
@@ -52,7 +53,7 @@ const LoginPage = ({history}) => {
     <form onSubmit={handleSubmit}>
         <Field label="Adresse email" name="username" value={credentials.username} onChange={handleChange} placeholder="Adresse email de connexion" error={error} />
         &nbsp;
-        <Field label="Mot de Passe" name="password" value={credentials.password} onChange={handleChange} error={error} type="password" />
+        <Field label="Mot de Passe" id="inputlogin" name="password" value={credentials.password} onChange={handleChange} error={error} type="password" />
         &nbsp;
         <div className="form-group">
             <button type='submit' className="btn btn-primary">Connexion</button>
