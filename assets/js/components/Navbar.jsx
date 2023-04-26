@@ -1,14 +1,13 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import authAPI from '../services/authAPI';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import AuthContext from '../contexts/AuthContext';
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 import {Helmet} from "react-helmet";
 import '../css/Navbar.css';
-import '../css/Navbar-Responsive.css';
 import cartIconEmpty from './images/cart-icon-empty.png';
 import cartIconFull from './images/cart-icon-full.png';
+import jwtDecode from "jwt-decode";
 
 
 const Navbar = ({history}) => {
@@ -24,15 +23,49 @@ const Navbar = ({history}) => {
       history.push("/login");
     };
 
+    const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    var token = localStorage.getItem("authToken");
+
+    if (token) {
+      var decodedToken = jwtDecode(token);
+      if (decodedToken.roles[0] === "ADMIN") {
+        setIsAdmin(true);
+      }
+    }
+  }, [isAuthenticated]);
+
     return (
       
       <nav className='menu-burger' class="navbar navbar-dark">
     
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="navbar-brand" className='titleacme' href="javascript:window.location.reload(true)">ACMÉ STUDIO</a> <br />
-  <a class="nav-accueil" href="#/home" role="tab" >Accueil</a>
-  <a class="nav-boutique" href="#/shop" >Boutique</a>
-  <a class="nav-historique" href="#/historique">Historique</a>
+    <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <ul>
+        <li>
+          <NavLink class="navbar-brand" className='titleacme' href="javascript:window.location.reload(true)">ACMÉ STUDIO</NavLink> <br />
+        </li>
+        <li>
+          <NavLink className="nav-accueil" to="/home" role="tab" >Accueil</NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-boutique" to="/shop" >Boutique</NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-historique" to="/historique">Historique</NavLink>
+        </li>
+        {isAdmin && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/Stock">
+                  Stock
+                </NavLink>
+              </li>
+            )}
+      </ul>
+  
+  
+  
+  
 
     <div className='deconected'>
       {isAuthenticated ? (

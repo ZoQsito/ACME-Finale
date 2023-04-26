@@ -6,6 +6,8 @@ import handleAddToCart from '../../js/components/Navbar';
 import cartIconEmpty from '../../js/components/images/cart-icon-empty.png';
 import cartIconFull from '../../js/components/images/cart-icon-full.png';
 import { toast } from "react-toastify";
+import { Link } from 'react-router-dom';
+
 
 function ShopPage() {
 
@@ -75,20 +77,17 @@ function ShopPage() {
       <h1>Bienvenue sur notre marketplace</h1>
 
       <div className='shop'>
-    <ul>
-      <li>
       {basket.length > 0 ?
-        <img className='panier-logo' src={cartIconFull} alt="Logo panier plein" /> :
-        <img className='panier-logo' src={cartIconEmpty} alt="Logo panier vide" />
+       <img className='panier-logo' src={cartIconFull} alt="Logo panier plein" /> :
+        <img className='panier-logo' src={cartIconEmpty} alt="Logo panier vide"/>
       }
-      </li>
-    </ul>
     </div>
+      
 
       <div className="card-container">
         {products.map((product) => (
           <div className="card" key={product.id}>
-            <img src={img} alt={product.nom} />
+            <img src={product.photo} alt={product.nom} />
             <h2>{product.nom}</h2>
             <div className="price">${product.prix}</div>
             <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>

@@ -27,7 +27,7 @@ class Produit
     #[ORM\Column(type: 'integer')]
     private $quantite;
 
-    #[ORM\Column(type: 'blob', nullable: true)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private $photo;
 
     public function getId(): ?int
@@ -83,12 +83,12 @@ class Produit
         return $this;
     }
 
-    public function getPhoto()
+    public function getPhoto(): ?string
     {
         return $this->photo;
     }
 
-    public function setPhoto($photo): self
+    public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
 

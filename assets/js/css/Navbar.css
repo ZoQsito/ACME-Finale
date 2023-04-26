@@ -25,6 +25,7 @@
     position: fixed !important;
     text-align: center !important;
     display: block !important;
+    z-index: 10;
  }
 
  .logs{
@@ -245,4 +246,5 @@
       width: 200%;
    }
  }
+
  
