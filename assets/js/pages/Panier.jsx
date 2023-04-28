@@ -6,10 +6,17 @@ import { toast } from "react-toastify";
 
 const Panier = (props) => {
   const [basket, setBasket] = useState([]);
+  const dateAchat = new Date().toISOString();
+  const [totalPanier, setTotalPanier] = useState();
+  const [referenceCommande, setReferenceCommande] = useState(
+    Math.floor(Math.random() * 200000) + 100000
+  );
+
 
   useEffect(() => {
-    Axios.get("http://127.0.0.1:8000/api/paniers").then((res) => {
-      setBasket(res.data["hydra:member"]);
+    Axios.get('http://127.0.0.1:8000/api/paniers').then((res) => {
+      setBasket(res.data['hydra:member']);
+      setTotalPanier(res.data["hydra:totalItems"]);
     });
   }, []);
 
@@ -40,6 +47,22 @@ const Panier = (props) => {
     (total, item) => total + item.prix_produit * item.quantite,
     0
   );
+
+
+  function handleCommande(totalPrice, dateAchat, referenceCommande, totalPanier) {
+    const cardInfo = {
+      qteProduit: totalPanier,
+      PrixTotal: totalPrice,
+      dateAchat: dateAchat,
+      reference: referenceCommande,
+    };
+    console.log(cardInfo);
+    Axios.post("http://127.0.0.1:8000/api/historique_commandes", cardInfo)
+    toast.success("La Commande a bien été ajouté", {
+      position: "bottom-center",
+      });
+  
+  }
 
   return (
     <>
@@ -85,7 +108,9 @@ const Panier = (props) => {
             Continuer les achats
           </NavLink>
         </button>
-        <button className="btn btn-primary">Passer commande</button>
+        <NavLink className="nav-link" to="/historique">
+        <button id='button1' onClick={() => handleCommande(totalPrice, dateAchat, referenceCommande, totalPanier)}>Passer Commande</button>
+        </NavLink>
       </div>
     </>
   );

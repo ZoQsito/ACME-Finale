@@ -1,51 +1,48 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import "../../styles/historique.css";
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import '../../styles/historique.css';
+import { NavLink } from "react-router-dom";
 
-class HistoriqueCommandes extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      commandes: []
-    };
-  }
+const HistoriqueCommandes = () => {
+  const [commandes, setCommandes] = useState([]);
 
-  componentDidMount() {
-    axios.get('/api/commandes').then((res) => {
-      this.setState({ commandes: res.data });
+  useEffect(() => {
+    Axios.get('http://127.0.0.1:8000/api/historique_commandes').then((res) => {
+      setCommandes(res.data['hydra:member']);
     });
-  }
+  }, []);
 
-  render() {
-    const { commandes } = this.state;
-
-    return (
-      <div className='historique-page-container'>
-        <h2>Historique des Commandes</h2>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nom</th>
-              <th>Adresse</th>
-              <th>Quantité</th>
+  return (
+    <div className='historique-page-container'>
+      <h2>Historique des Commandes</h2>
+      <table className='table'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Référence</th>
+            <th>Quantité Article</th>
+            <th>Prix Total</th>
+            <th>Date Achat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {commandes.map((commande) => (
+            <tr key={commande.id}>
+              <td>{commande.id}</td>
+              <td>{commande.reference}</td>
+              <td>{commande.qteProduit}</td>
+              <td>{commande.prixTotal}€</td>
+              <td>{new Date(commande.dateAchat).toLocaleDateString('fr-FR')}</td>
+              <td>
+                <NavLink className="nav-link" to="/deliverystatus">Suivre</NavLink>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {commandes.map((commande) => (
-              <tr key={commande.id}>
-                <td>{commande.id}</td>
-                <td>{commande.nom}</td>
-                <td>{commande.adresse}</td>
-                <td>{commande.quantite}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-}
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default HistoriqueCommandes;

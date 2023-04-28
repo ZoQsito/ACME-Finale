@@ -19,6 +19,7 @@ import Stock from "./js/pages/Stock";
 import Stocks from "./js/pages/Stocks";
 import jwtDecode from "jwt-decode";
 import HistoriqueCommandes from "./js/pages/HistoriqueCommandes";
+import DeliveryStatus from "./js/pages/DeliveryStatus"
 
 authAPI.setup();
 
@@ -79,6 +80,7 @@ const App = () => {
             <PrivateRoute path="/shop" component={ShopPage} />
             <PrivateRoute path="/panier" component={Panier} />
             <PrivateRoute path="/historique" component={HistoriqueCommandes} />
+            <PrivateRoute path="/deliverystatus" component={DeliveryStatus} />
             <AdminRoute path="/Stock" component={Stock} />
             <AdminRoute
               path="/Stocks/:id"

@@ -27,10 +27,6 @@ class HistoriqueCommande
     #[ORM\Column(type: 'integer')]
     private $reference;
 
-    #[ORM\ManyToOne(targetEntity: user::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $idUser;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -84,15 +80,4 @@ class HistoriqueCommande
         return $this;
     }
 
-    public function getIdUser(): ?user
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(?user $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
 }
