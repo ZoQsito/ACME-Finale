@@ -77,7 +77,7 @@ const Stock = ({history}) => {
               </tbody>
             </table>
             <Link to="/Stocks/new">
-              <button className="Add btn1 w-85 my-4 mb-2 montserrat">
+              <button id="create" className="Add btn1 w-85 my-4 mb-2 montserrat">
                 Créer un Produit
               </button>
             </Link>

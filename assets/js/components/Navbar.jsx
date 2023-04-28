@@ -42,11 +42,11 @@ const Navbar = ({history}) => {
     
     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <ul>
-        <li>
-          <NavLink class="navbar-brand" className='titleacme' href="javascript:window.location.reload(true)">ACMÉ STUDIO</NavLink> <br />
+        <li className='titleacme'>
+          <NavLink href="javascript:window.location.reload(true)">ACMÉ STUDIO</NavLink> <br />
         </li>
-        <li>
-          <NavLink className="nav-accueil" to="/home" role="tab" >Accueil</NavLink>
+        <li className="nav-accueil">
+          <NavLink  to="/home" role="tab" >Accueil</NavLink>
         </li>
         <li>
           <NavLink className="nav-boutique" to="/shop" >Boutique</NavLink>
