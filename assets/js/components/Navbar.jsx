@@ -38,7 +38,7 @@ const Navbar = ({history}) => {
 
     return (
       
-      <nav className='menu-burger' class="navbar navbar-dark">
+      <nav className="menu-burger navbar navbar-dark">
     
     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <ul>

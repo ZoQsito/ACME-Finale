@@ -7,6 +7,7 @@ import cartIconEmpty from '../../js/components/images/cart-icon-empty.png';
 import cartIconFull from '../../js/components/images/cart-icon-full.png';
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
+import jwtDecode from 'jwt-decode';
 
 
 function ShopPage() {
@@ -15,7 +16,7 @@ function ShopPage() {
   const[products, setProducts] = useState([]);
 
   const [cartCount, setCartCount] = useState(0);
-  const [cartIcon, setCartIcon] = useState(cartIconEmpty);
+  const [emailUser, setEmailUser] = useState();
 
   const data = basket.map((data) => data.quantite > 1);
 
@@ -31,11 +32,18 @@ function ShopPage() {
       Axios.get("http://127.0.0.1:8000/api/paniers").then((res) => {
       setBasket(res.data["hydra:member"]);
     });
-  },[]);
-  const img = 'https://placehold.it/300x200';
-  console.log(products)
 
-  function handleBuyClick(product) {
+    var token = localStorage.getItem("authToken");
+
+    if (token) {
+      var decodedToken = jwtDecode(token);
+      setEmailUser(decodedToken.username)
+    }
+
+  },[]);
+
+
+  function handleBuyClick(product, emailUser) {
     const { id, nom , prix, reference} = product;
     const cardInfo = {
       quantite: 1,
@@ -43,6 +51,7 @@ function ShopPage() {
       nomProduit: nom,
       prixProduit: prix,
       referenceProduit: reference,
+      email: emailUser,
     };
     console.log(cardInfo);
     Axios.post("http://127.0.0.1:8000/api/paniers", cardInfo)
@@ -94,7 +103,7 @@ function ShopPage() {
             <img src={product.photo} alt={product.nom} />
             <h2>{product.nom}</h2>
             <div className="price">${product.prix}</div>
-            <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>
+            <button id='button1' onClick={() => handleBuyClick(product, emailUser)}>Acheter</button>
           </div>
         ))}
       </div>

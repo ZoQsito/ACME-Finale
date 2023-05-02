@@ -38,6 +38,10 @@ class Panier
     #[ORM\Column(type: 'integer')]
     private $id_produit;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $email;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,17 +59,6 @@ class Panier
         return $this;
     }
 
-    // public function getIdUser(): ?user
-    // {
-    //     return $this->idUser;
-    // }
-
-    // public function setIdUser(?user $idUser): self
-    // {
-    //     $this->idUser = $idUser;
-
-    //     return $this;
-    // }
 
     public function getNomProduit(): ?string
     {
@@ -123,6 +116,18 @@ class Panier
     public function setIdProduit(int $id_produit): self
     {
         $this->id_produit = $id_produit;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
