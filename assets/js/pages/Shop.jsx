@@ -8,6 +8,7 @@ import cartIconFull from '../../js/components/images/cart-icon-full.png';
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
+import authAPI from '../services/authAPI';
 
 
 function ShopPage() {
@@ -17,6 +18,11 @@ function ShopPage() {
 
   const [cartCount, setCartCount] = useState(0);
   const [emailUser, setEmailUser] = useState();
+  
+
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    authAPI.isAuthenticated()
+  );
 
   const data = basket.map((data) => data.quantite > 1);
 
@@ -103,7 +109,11 @@ function ShopPage() {
             <img src={product.photo} alt={product.nom} />
             <h2>{product.nom}</h2>
             <div className="price">${product.prix}</div>
-            <button id='button1' onClick={() => handleBuyClick(product, emailUser)}>Acheter</button>
+            {isAuthenticated && (
+              <button id="button1" onClick={() => handleBuyClick(product, emailUser)}>
+                Acheter
+              </button>
+            )}
           </div>
         ))}
       </div>

@@ -76,8 +76,8 @@ const App = () => {
           <Switch>
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/shop" component={ShopPage} />
             <PrivateRoute path="/profil" component={Profil_Page} />
-            <PrivateRoute path="/shop" component={ShopPage} />
             <PrivateRoute path="/panier" component={Panier} />
             <PrivateRoute path="/historique" component={HistoriqueCommandes} />
             <PrivateRoute path="/deliverystatus" component={DeliveryStatus} />
