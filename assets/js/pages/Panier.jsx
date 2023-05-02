@@ -56,10 +56,9 @@ const Panier = (props) => {
     }
   };
 
-  const totalPrice = basket.reduce(
-    (total, item) => total + item.prix_produit * item.quantite,
-    0
-  );
+  const totalPrice = basket
+  .filter(item => item.email === emailUser)
+  .reduce((total, item) => total + item.prix_produit * item.quantite, 0);
 
   function handleCommande(
     totalPrice,
