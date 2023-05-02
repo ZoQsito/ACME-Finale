@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 const Panier = (props) => {
   const [basket, setBasket] = useState([]);
   const dateAchat = new Date().toISOString();
+  const [totalPanier, setTotalPanier] = useState();
   const [referenceCommande, setReferenceCommande] = useState(
     Math.floor(Math.random() * 200000) + 100000
   );
