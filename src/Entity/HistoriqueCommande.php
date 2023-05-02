@@ -27,6 +27,9 @@ class HistoriqueCommande
     #[ORM\Column(type: 'integer')]
     private $reference;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $email;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class HistoriqueCommande
     public function setReference(int $reference): self
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

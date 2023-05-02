@@ -8,7 +8,6 @@ import jwtDecode from "jwt-decode";
 const Panier = (props) => {
   const [basket, setBasket] = useState([]);
   const dateAchat = new Date().toISOString();
-  const [totalPanier, setTotalPanier] = useState();
   const [referenceCommande, setReferenceCommande] = useState(
     Math.floor(Math.random() * 200000) + 100000
   );
@@ -17,7 +16,6 @@ const Panier = (props) => {
   useEffect(() => {
     Axios.get("http://127.0.0.1:8000/api/paniers").then((res) => {
       setBasket(res.data["hydra:member"]);
-      setTotalPanier(res.data["hydra:totalItems"]);
     });
 
     var token = localStorage.getItem("authToken");
@@ -60,17 +58,22 @@ const Panier = (props) => {
   .filter(item => item.email === emailUser)
   .reduce((total, item) => total + item.prix_produit * item.quantite, 0);
 
+  const nbProduits = basket
+      .filter(item => item.email === emailUser)
+      .reduce((total, item) => total + item.quantite, 0);
+
+
   function handleCommande(
     totalPrice,
     dateAchat,
     referenceCommande,
-    totalPanier
   ) {
     const cardInfo = {
-      qteProduit: totalPanier,
+      qteProduit: nbProduits,
       PrixTotal: totalPrice,
       dateAchat: dateAchat,
       reference: referenceCommande,
+      email: emailUser,
     };
     console.log(cardInfo);
     Axios.post("http://127.0.0.1:8000/api/historique_commandes", cardInfo);
@@ -135,7 +138,6 @@ const Panier = (props) => {
                 totalPrice,
                 dateAchat,
                 referenceCommande,
-                totalPanier
               )
             }
           >
