@@ -13,6 +13,7 @@ const Stocks = ({ match, history }) => {
     prix: "",
     reference: "",
     quantite: "",
+    photo: "",
   });
 
   const [errors, setErrors] = useState({
@@ -20,6 +21,7 @@ const Stocks = ({ match, history }) => {
     prix: "",
     reference: "",
     quantite: "",
+    photo: "",
   });
 
   const [editing, setEditing] = useState(false);
@@ -27,13 +29,15 @@ const Stocks = ({ match, history }) => {
 
   const fetchproduit = async (id) => {
     try {
-      const { nom, prix, reference, quantite } = await Axios.get("http://127.0.0.1:8000/api/produits/"+ id)
-      setProducts({ nom, prix, reference, quantite });
+      const { nom, prix, reference, quantite, photo } = await Axios.get("http://127.0.0.1:8000/api/produits/"+ id)
+      setProducts({ nom, prix, reference, quantite, photo });
     } catch (error) {
       toast.error("Le produit n'a pas pu être chargé");
       console.log(products)
     }
   };
+
+  console.log(products)
 
   useEffect(() => {
     if (id !== "new") {
@@ -45,6 +49,7 @@ const Stocks = ({ match, history }) => {
         prix : res.data.prix,
         reference : res.data.reference,
         quantite: res.data.quantite,
+        photo: res.data.photo,
       });
     })
     }
@@ -139,6 +144,16 @@ const Stocks = ({ match, history }) => {
               value={products.quantite}
               onChange={handleChange}
               error={errors.quantite}
+            />
+            &nbsp;
+            <Field
+              name="photo"
+              label="Photo"
+              type="text"
+              placeholder="Url Photo"
+              value={products.photo}
+              onChange={handleChange}
+              error={errors.photo}
             />
           </div>
           &nbsp;
