@@ -6,7 +6,6 @@ import Axios from 'axios';
 
 
 const ProgressBar = () => {
-  const [step, setStep] = useState(0);
   const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
   const [isAdmin, setIsAdmin] = useState(false);
   const [commande, setCommandes] = useState([]);
@@ -67,7 +66,7 @@ const ProgressBar = () => {
           <div className="progress">
             <div
               className={`progress-bar ${
-                step >= 0 ? "bg-success" : "bg-secondary"
+                step1 >= 1 ? "bg-success" : "bg-secondary"
               }`}
               role="progressbar"
               style={{ width: "25%" }}
@@ -79,7 +78,7 @@ const ProgressBar = () => {
             </div>
             <div
               className={`progress-bar ${
-                step >= 1 ? "bg-success" : "bg-secondary"
+                step1 >= 2 ? "bg-success" : "bg-secondary"
               }`}
               role="progressbar"
               style={{ width: "25%" }}
@@ -91,7 +90,7 @@ const ProgressBar = () => {
             </div>
             <div
               className={`progress-bar ${
-                step >= 2 ? "bg-success" : "bg-secondary"
+                step1 >= 3 ? "bg-success" : "bg-secondary"
               }`}
               role="progressbar"
               style={{ width: "25%" }}
@@ -103,7 +102,7 @@ const ProgressBar = () => {
             </div>
             <div
               className={`progress-bar ${
-                step >= 3 ? "bg-success" : "bg-secondary"
+                step1 >= 4 ? "bg-success" : "bg-secondary"
               }`}
               role="progressbar"
               style={{ width: "25%" }}
@@ -127,7 +126,7 @@ const ProgressBar = () => {
                 <button
                   className="btn btn-primary"
                   onClick={handleNextStep}
-                  disabled={step === 4}
+                  disabled={step1 === 4}
                 >
                   Next Step
                 </button>
@@ -135,7 +134,7 @@ const ProgressBar = () => {
             )}
           </div>
         </div>
-        {step === 2 ? (
+        {step1 === 3 ? (
           <iframe
             style={{ width: "1000px", height: "300px", padding: "20px" }}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10122.737637080592!2d3.0572728014564885!3d50.63297923233601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d59a2b3fa653%3A0x1aaf5c625712dace!2sLille-Centre%2C%20Lille!5e0!3m2!1sfr!2sfr!4v1681206548215!5m2!1sfr!2sfr"
