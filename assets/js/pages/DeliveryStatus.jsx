@@ -120,14 +120,14 @@ const ProgressBar = () => {
                 <button
                   className="btn btn-secondary mr-2"
                   onClick={handlePreviousStep}
-                  disabled={step === 0}
+                  disabled={step1 === 1}
                 >
                   Previous Step
                 </button>
                 <button
                   className="btn btn-primary"
                   onClick={handleNextStep}
-                  disabled={step === 3}
+                  disabled={step === 4}
                 >
                   Next Step
                 </button>
