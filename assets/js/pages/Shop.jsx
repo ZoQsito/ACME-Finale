@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import "../../styles/shoppage.css"
+import "../../styles/shoppage.css";
 import Navbar from '../../js/components/Navbar';
 import handleAddToCart from '../../js/components/Navbar';
 import cartIconEmpty from '../../js/components/images/cart-icon-empty.png';

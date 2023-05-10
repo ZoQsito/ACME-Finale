@@ -9,6 +9,12 @@ const ProgressBar = () => {
   const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const url = window.location.href;
+  const segments = url.split("/");
+  const lastElement = segments[segments.length - 1];
+
+  console.log(lastElement);
+
   const handleNextStep = () => {
     setStep((prevStep) => prevStep + 1);
   };
@@ -16,6 +22,20 @@ const ProgressBar = () => {
   const handlePreviousStep = () => {
     setStep((prevStep) => prevStep - 1);
   };
+  const handleSaveDeliveryStatus = () => {
+    axios.get('http://127.0.0.1:8000/api/historique_commandes/status')
+      .then(response => {
+        const deliveryStatus = response.data.status; // Supposons que le statut de livraison se trouve dans response.data.statut
+        console.log(deliveryStatus); // Afficher le statut de livraison récupéré depuis l'API
+
+        // Vous pouvez ensuite effectuer des actions supplémentaires avec le statut de livraison récupéré
+        // Par exemple, mettre à jour l'état local ou effectuer des opérations spécifiques en fonction du statut
+      })
+      .catch(error => {
+        console.error(error); // Gestion des erreurs
+      });
+  };
+
 
 
   useEffect(() => {
@@ -103,6 +123,20 @@ const ProgressBar = () => {
                 </button>
               </div>
             )}
+              <div className="btnStep button-group mt-4">
+            {isAdmin && (
+              <div>
+                {/* ... */}
+                <button
+                  className="btn btn-primary"
+                  onClick={handleSaveDeliveryStatus} // Ajout de la fonction de gestion d'événement
+                  disabled={step === 3}
+                >
+                  Sauvegarder le statut de livraison
+                </button>
+              </div>
+            )}
+          </div>
           </div>
         </div>
         {step === 2 ? (
