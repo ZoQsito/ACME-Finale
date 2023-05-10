@@ -75,6 +75,7 @@ const Panier = (props) => {
       dateAchat: dateAchat,
       reference: referenceCommande,
       email: emailUser,
+      status: 1,
     };
     console.log(cardInfo);
     Axios.post("http://127.0.0.1:8000/api/historique_commandes", cardInfo);

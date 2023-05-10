@@ -80,7 +80,7 @@ const App = () => {
             <PrivateRoute path="/profil" component={Profil_Page} />
             <PrivateRoute path="/panier" component={Panier} />
             <PrivateRoute path="/historique" component={HistoriqueCommandes} />
-            <PrivateRoute path="/deliverystatus" component={DeliveryStatus} />
+            <PrivateRoute path="/deliverystatus/:id" component={DeliveryStatus} />
             <AdminRoute path="/Stock" component={Stock} />
             <AdminRoute
               path="/Stocks/:id"

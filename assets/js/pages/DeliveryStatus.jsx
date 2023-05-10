@@ -2,41 +2,19 @@ import React, {useContext, useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import "../../styles/DeliveryStatus.css";
 import AuthContext from '../contexts/AuthContext';
+import Axios from 'axios';
 
 
 const ProgressBar = () => {
   const [step, setStep] = useState(0);
   const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [commande, setCommandes] = useState([]);
+  const [step1 , setStep1] = useState();
 
   const url = window.location.href;
   const segments = url.split("/");
   const lastElement = segments[segments.length - 1];
-
-  console.log(lastElement);
-
-  const handleNextStep = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
-
-  const handlePreviousStep = () => {
-    setStep((prevStep) => prevStep - 1);
-  };
-  const handleSaveDeliveryStatus = () => {
-    axios.get('http://127.0.0.1:8000/api/historique_commandes/status')
-      .then(response => {
-        const deliveryStatus = response.data.status; // Supposons que le statut de livraison se trouve dans response.data.statut
-        console.log(deliveryStatus); // Afficher le statut de livraison récupéré depuis l'API
-
-        // Vous pouvez ensuite effectuer des actions supplémentaires avec le statut de livraison récupéré
-        // Par exemple, mettre à jour l'état local ou effectuer des opérations spécifiques en fonction du statut
-      })
-      .catch(error => {
-        console.error(error); // Gestion des erreurs
-      });
-  };
-
-
 
   useEffect(() => {
     var token = localStorage.getItem("authToken");
@@ -47,7 +25,39 @@ const ProgressBar = () => {
         setIsAdmin(true);
       }
     }
+    Axios.get('http://127.0.0.1:8000/api/historique_commandes/'+ lastElement)
+      .then(response => {
+        setCommandes(response.data);
+        setStep1(response.data.status)
+      })
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    const updateDeliveryStatus = async () => {
+      try {
+        await Axios.put('http://127.0.0.1:8000/api/historique_commandes/'+ lastElement, {
+          status: step1, 
+        });
+      } catch (error) {
+        console.error(error); 
+      }
+    };
+    updateDeliveryStatus();
+  });
+
+  console.log(step1);
+  
+
+  const handleNextStep = () => {
+    setStep((prevStep) => prevStep + 1);
+    setStep1(step1 + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setStep((prevStep) => prevStep - 1);
+    setStep1(step1 - 1);
+  };
+
 
   return (
     <div className="container">
@@ -123,20 +133,6 @@ const ProgressBar = () => {
                 </button>
               </div>
             )}
-              <div className="btnStep button-group mt-4">
-            {isAdmin && (
-              <div>
-                {/* ... */}
-                <button
-                  className="btn btn-primary"
-                  onClick={handleSaveDeliveryStatus} // Ajout de la fonction de gestion d'événement
-                  disabled={step === 3}
-                >
-                  Sauvegarder le statut de livraison
-                </button>
-              </div>
-            )}
-          </div>
           </div>
         </div>
         {step === 2 ? (
