@@ -44,16 +44,13 @@ const ProgressBar = () => {
     updateDeliveryStatus();
   });
 
-  console.log(step1);
   
 
   const handleNextStep = () => {
-    setStep((prevStep) => prevStep + 1);
     setStep1(step1 + 1);
   };
 
   const handlePreviousStep = () => {
-    setStep((prevStep) => prevStep - 1);
     setStep1(step1 - 1);
   };
 

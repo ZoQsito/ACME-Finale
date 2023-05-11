@@ -44,6 +44,8 @@ function ShopPage() {
     if (token) {
       var decodedToken = jwtDecode(token);
       setEmailUser(decodedToken.username)
+
+      console.log(decodedToken)
     }
 
   },[]);
@@ -64,27 +66,8 @@ function ShopPage() {
     toast.success("Le Produit a bien été ajouté", {
       position: "bottom-center",
       });
-  
   }
 
-  const handleDelete = async (id) => {
-    const originalProduct = [...products];
-
-    setProducts(products.filter((products) => products.id !== id));
-
-    try {
-      await Axios
-      .delete("http://127.0.0.1:8000/api/produits/" + id)
-      toast.success("Le Produit a bien été supprimé", {
-        position: "bottom-center",
-        });
-    } catch (error) {
-      setProducts(originalProduct);
-      toast.error("La suppression du Produit n'a pas pu fonctionner", {
-        position: "bottom-center",
-        });
-    }
-  };
 
  
   return (
