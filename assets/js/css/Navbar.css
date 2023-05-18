@@ -194,6 +194,12 @@
    margin-bottom: 200px;
  }
 
+ .profil-button{
+   position: absolute;
+   left: 18%;
+   top: 75%;
+   width: 80%;
+}
 
 
 
@@ -241,6 +247,13 @@
       position: absolute;
       left: 13%;
       top: 80%;
+      width: 80%;
+   }
+
+   .profil-button{
+      position: absolute;
+      left: 13%;
+      top: 70%;
       width: 80%;
    }
    .copyright{

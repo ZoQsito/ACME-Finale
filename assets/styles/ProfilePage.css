@@ -1,0 +1,34 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  .profile-card {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    font-size: 24px;
+  }
+  
+  .bouton-historique {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .bouton-historique:hover {
+    background-color: #0056b3;
+  }
+  
+  .bouton-historique:focus {
+    outline: none;
+  }

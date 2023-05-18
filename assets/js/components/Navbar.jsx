@@ -76,6 +76,10 @@ const Navbar = ({ history }) => {
         <div className="deconected">
           {isAuthenticated ? (
             <div>
+              <NavLink className="profil-button" to="/profil">
+                <button className="deconected-button">Profil</button>
+              </NavLink>
+
               <button className="deconected-button" onClick={handleLogout}>
                 Se déconnecter
               </button>
