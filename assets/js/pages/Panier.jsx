@@ -8,13 +8,18 @@ import jwtDecode from "jwt-decode";
 const Panier = (props) => {
   const [basket, setBasket] = useState([]);
   const dateAchat = new Date().toISOString();
-  const [totalPanier, setTotalPanier] = useState();
+  const [produit, setProduit] = useState([]);
   const [referenceCommande, setReferenceCommande] = useState(
     Math.floor(Math.random() * 200000) + 100000
   );
   const [emailUser, setEmailUser] = useState();
 
   useEffect(() => {
+
+    Axios.get("http://127.0.0.1:8000/api/produits").then((res) => {
+      setProduit(res.data["hydra:member"]);
+    });
+
     Axios.get("http://127.0.0.1:8000/api/paniers").then((res) => {
       setBasket(res.data["hydra:member"]);
     });
@@ -27,7 +32,7 @@ const Panier = (props) => {
     }
   }, []);
 
-  console.log(basket[0]);
+  console.log(produit);
 
   const handleDelete = async (id, data) => {
     const originalProduct = [...basket];
@@ -38,10 +43,9 @@ const Panier = (props) => {
     try {
       await Axios.delete("http://127.0.0.1:8000/api/paniers/" + data.id);
 
-      const { quantite } = data;
 
       const stockupdate = {
-        quantite: quantite + 1,
+        quantite: produit[data.id_produit - 1].quantite + 1,
       };
       Axios.put(
         "http://127.0.0.1:8000/api/produits/" + data.id_produit,
